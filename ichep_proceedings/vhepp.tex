@@ -50,7 +50,7 @@ within boosted boson.}
 \section{Introduction}
 A very high energy proton-proton collider in the future, such as FCC-hh 
 at $\sqrt{s}=100$~TeV~\cite{FCC-hh} or 
-SPPC at $\sqrt{s}=70$~TeV~\cite{SPPC-one,SPPC-two,SPPC-three}, 
+SPPC at $\sqrt{s}=70$~TeV~\cite{SPPC-one,SPPC-three}, 
 will set many challenges for the detector design. High-energy pp colliders 
 can produce particles with large mass, giving decay products with large energy 
 and transverse momentum. For searches or measurements that involve hadronic 
@@ -61,7 +61,7 @@ boosted jet, a calorimeter for future pp colliders must satisfy the following
 requirements: (i)
  good containment up to $\ptj\approx 30$~TeV, which implies a total 
  interaction length of $\approx 12 \lambda_\mathrm{I}$ for the full 
- calorimeter (electromagnetic and hadron); 
+ calorimeter (electromagnetic and hadron)~\cite{bitch};
  (ii) small constant term in the energy resolution of hadron calorimeter: 
 $c < 3\%$, since the constant term dominates jet energy resolution for 
 $\ptj>5$~TeV;
@@ -76,7 +76,7 @@ name of this detector is ``SiFCC'', where ``Si'' indicates that it
 shares several design features of the all-silicon SiD detector. 
 %
 This document studies the performance of the SiFCC detector using 
-a full \GEANTfour simulation and the physics events containing 
+a full \GEANTfour\ simulation and the physics events containing 
 boosted W-jets and Higgs-jets. The studies shown in this document 
 focus on the performance of the electromagnetic and hadron calorimeters
  of the SiFCC detector.
@@ -88,7 +88,7 @@ and 15.7~m, respectively. By comparing the diameter size,
 the SiFCC is $\approx 30\%$ smaller than the ATLAS detector and 
 $\approx 30\%$ larger than the CMS detector. 
 The version of the SiFCC detector for the study in this document 
-is v4~\cite{SiFCCv4}, with a focus on the barrel region. 
+is version 7, currently with the main focus on the barrel region.
 %Figure~\ref{fig:sifcc} illustrates the geometrical sizes of the SiFCC 
 %detector.
 %
@@ -105,53 +105,54 @@ layers in the barrel and 4 disks in each endcap.
  has a cell size of 2~cm$\times$2~cm, 32 longitudinal layers, and a 
 total radiation length of $\approx 35 X_0$. The HCAL cell size is 
 5~cm$\times$5~cm, with 64 longitudinal layers, and a total interaction 
-length of $\approx 11.25 \lambda_{\mathrm I}$.
-
- 
-%\begin{figure}
-%\begin{center}
-%\includegraphics[width=.7\textwidth]{figs/SiFCC.pdf}
-%\end{center}
-%\caption{A graphical comparison of the SiD (left) and SiFCC (right) detectors.}
-%\label{fig:sifcc}
-%\end{figure}
+length of $\approx 11.25 \lambda_{\mathrm I}$ to provide a good containment 
+for single hadrons with energies above 1 TeV and a \pt= 40~TeV 
+jet~\cite{bitch}. 
 
 \section{Simulated Samples \label{sec:sample}}
 In order to study the detector performance of the SiFCC detector, we use 
 three different sets of simulated samples: (i) single pion, (ii) 
-$\mathrm{Z}^{\prime}\rightarrow \mathrm{WW} \rightarrow \mathrm{q}\bar{\mathrm{q}^\prime}\mathrm{q^\prime}\bar{\mathrm{q}}$, and (iii) 
+$\mathrm{Z}^{\prime}\rightarrow \mathrm{WW} \rightarrow \mathrm{q}\bar{\mathrm{q}}^\prime\mathrm{q^\prime}\bar{\mathrm{q}}$, and (iii) 
 $\mathrm{H}_2\rightarrow \mathrm{hh} \rightarrow \mathrm{b}\bar{\mathrm{b}} \mathrm{b}\bar{\mathrm{b}}$ in the 2HDM model. 
 % 
-The single pion samples are generated using the ProMC Java 
+The single pion samples are generated using the ProMC 
 package~\cite{PROMC} where the pions are 
 produced at the origin $(x,y,z)=(0,0,0)$ with a uniform distribution 
-in $\phi=0-\pi$ and $\eta = -1.5-1.5$ and the energy of pion is 
-$2^n$ GeV for $n=0-13$. 
+in $\phi=0-2\pi$ and $\left|\eta\right| < 3.5$ and the energy of pion is 
+$2^n$ GeV for $n=1-15$. 
 %
 Given that our focus is on the detector performance, in order to eliminate 
-pileup effects and to reduce the amount of simulation time, 
+the need of reconstructing particles from the underlying event present in pp 
+collisions, 
 both the $\mathrm{Z}^{\prime}$ and the $\mathrm{H}_2$ are produced in 
 $\mu^+\mu^-$ collisions. 
 The $\mathrm{Z}^{\prime}$ samples are generated with 
-\PYTHIA~6~\cite{PYTHIA} in $\mu^+\mu^-$ collisions at $\sqrt{s}=40$~TeV 
-for $M_\mathrm{Z^\prime}=10,20,30,$ and 40~TeV, respectively. 
+\PYTHIA~6~\cite{PYTHIA} in $\mu^+\mu^-$ collisions for 
+$\sqrt{s}=M_\mathrm{Z^\prime}=5,10,20,$ and 40~TeV, respectively. 
 The 2HDM $\mathrm{H}_2$ sample is generated at LO with 
 \MADGRAPHAMC~5.2.3.3~\cite{MADGRAPH} in $\mu^+\mu^-$ collisions at 
 $\sqrt{s}=5$~TeV for $M_\mathrm{H_2}=5$~TeV; the parton showering and 
 hadronization are performed with \PYTHIA~6. 
 %
 All samples are processed through a \GEANTfour-based~\cite{GEANT4} simulation 
-of the SiFCC detector. The response of the SiFCC detector to physics process 
-is simulated using the SLIC software package (``Simulator for the Linear 
-Collider'')~\cite{SLIC} developed for the ILC project. The main strength of 
-this software lies in the fact that it can easily be configured using XML 
-option files, and it has a platform-independent reconstruction which can be 
-easily deployed on computers with different operating systems. 
+of the SiFCC detector version 7. 
+%The response of the SiFCC detector to physics 
+%process is simulated using the SLIC software package (``Simulator for 
+%the Linear Collider'')~\cite{SLIC} developed for the ILC project. 
+The simulated samples are provided by the HepSim repository~\cite{hepsim}. 
+and the computations were performed using the Open-Science grid~\cite{osg}. 
+
+%The main strength of 
+%this software lies in the fact that it can easily be configured using XML 
+%option files, and it has a platform-independent reconstruction which can be 
+%easily deployed on computers with different operating systems. 
+
 
 
 \section{Energy Response and Resolution of Single Pion}
 We study the energy response and resolution of SiFCC calorimeters using the 
-single pion samples as described in Section~\ref{sec:sample}. The energy 
+single pion samples as described in Section~\ref{sec:sample}. The $\left|\eta\right|$ 
+of pion must be less than 1.1. The energy 
 response is evaluated by taking the 90\% truncated mean of the energy 
 clustered with calorimeter hits and dividing it with the true pion energy, 
 while the resolution is the ratio of the 90\% truncated RMS to 
@@ -161,16 +162,11 @@ parameter of 0.4~\cite{Cacciari:2008gp}, as implemented in the \textsc{FASTJET}
 package~\cite{fastjet}. The calorimeter energy response and resolution in 
 Fig.~\ref{fig:piresponse} are fitted with the functions below:
 \begin{equation}
- y_\mathrm{response} = A \times \mathrm{Erf}\left(\frac{E_\mathrm{true}-B}{C}\right),
+ y_\mathrm{response} = A + B\cdot\log\left(E_\mathrm{true}\right), ~~y_\mathrm{resolution} = \frac{0.43}{\sqrt{E_\mathrm{true}}} \oplus 0.009.
 \label{eq:response}
 \end{equation}
-where $A=1.01$, $B=-64.6$ and $C=56.8$, and 
-\begin{equation}
- y_\mathrm{resolution} = \frac{0.38}{\sqrt{E_\mathrm{true}}} \oplus 0.01.
-\label{eq:resolution}
-\end{equation}
-%Equations~\ref{eq:response}--\ref{eq:resolution} are used to weight and 
-%smear the energy of generator-level particles in Section~\ref{sec:weight}.
+where $A=0.7,0.86,1$, and $B=0.077,0.0202,0$ for $E_\mathrm{true}$ in the 
+range of 2--16, 16--2000, and above 2000 GeV. 
 
 
 \begin{figure}
@@ -180,11 +176,12 @@ where $A=1.01$, $B=-64.6$ and $C=56.8$, and
 \includegraphics[width=.5\textwidth]{figs/pi_resolution.pdf}\\
 \end{tabular}
 \end{center}
-\caption{The energy response (left) and resolution (right) of single 
+\caption{The calorimeter energy response (left) and resolution (right) of single 
 pion as a function of true pion energy. The solid lines indicate fits to 
-the data points. The response and resolution using only information from 
-the tracker are also shown for comparison. The calorimeter energy resolution 
-is better than the tracker-only resolution for energy above 2~TeV. }
+the data points. %The response and resolution using only information from 
+%the tracker are also shown for comparison. The calorimeter energy resolution 
+%is better than the tracker-only resolution for energy above 2~TeV. 
+}
 \label{fig:piresponse}
 \end{figure}
 
@@ -197,16 +194,16 @@ while protons, neutrons, $\mathrm{K}_{s}^0$, and $\mathrm{K}_{L}^0$ contribute
 $\approx 5\%$ each. The rest of the energy comes from baryons. 
 Before clustering the generator-level particles with the anti-kt algorithm, 
 we modify the energy of each generator-level particle with weighing and 
-smearing. The weighing and smearing are performed as follows. 
+smearing. %The weighing and smearing are performed as follows. 
 Figure~\ref{fig:piresponse} shows a 
 loss of acceptance for low-momentum tracks due to the 5-Tesla magnetic field. 
-Therefore, the response of all charged particles with energy below 3~GeV is 
+Therefore, the response of all charged particles with energy below 2~GeV is 
 set to zero. The response of electrons and photons 
 is set to unity and the energy is smeared using a resolution 
 of $\left(0.15/\sqrt{E} \oplus 0.01\right)$. Finally, the energies
 of all other charged particles are weighted and smeared 
 following the response and resolution functions in 
-Eqns.~\ref{eq:response}--\ref{eq:resolution}. 
+Eqn.~\ref{eq:response}. 
 %
 Figure~\ref{fig:weight} shows the distributions of the ratio of 
 weighted/smeared energy to the true jet energy from the $\mathrm{Z}^{\prime}$ 
@@ -216,7 +213,7 @@ excluded in the clustering). The weighted and smeared distributions are
 narrower than the calorimeter energy distributions; in addition, the overall 
 means of the former distributions are higher. This study indicates that the 
 calorimeter jet energy response and resolution can not be modeled and 
-extrapolated simply from those of the single-particle samples.
+extrapolated simply from those of the single-particle samples. 
 
 %\begin{figure}
 %\begin{center}
@@ -254,18 +251,23 @@ with the SiFCC calorimeters (solid lines).}
 \section{Energy Response and Resolution of W-jets \label{sec:jetresponse}}
 We study the energy response and resolution of W-jets using the 
 $\mathrm{Z}^{\prime}\rightarrow \mathrm{WW}$ samples with $\mathrm{Z}^{\prime}$ 
-mass at 10-40~TeV. Figure~\ref{fig:wjet} shows the 90\%-truncated mean 
-and RMS of the jet energy ratios. The sampling term of the W-jet energy 
-resolution is $\approx 432\%$ while the constant term is $\approx$2.3\%;
-the sampling term is much higher than our expectation. However, note that 
-this is the first time that the response and resolution of 
+mass at 5--40~TeV. The $\left|\eta\right|$ of W-jets must be less than 1.1. 
+Figure~\ref{fig:wjet} shows the 90\%-truncated mean and RMS of the jet energy ratios. 
+The sampling term of the W-jet energy resolution for these extreme energies 
+is $\approx 237\%$ while the constant term is $\approx$2.7\%;
+the sampling term is much higher than our expectation. 
+%The W-jet energy 
+%resolution deteriorates as the jet energy increases, which is not expected. 
+However, note that this is the first time that the response and resolution of 
 such high-energy jets have been studied with a full detector simulation. 
+Currently, studies are ongoing to understand the reconstruction
+of calorimeter clusters used for jets. 
 
 \begin{figure}
 \begin{center}
 \begin{tabular}{cc}
-\includegraphics[width=.4\textwidth]{figs/Mean90Fit.pdf} &
-\includegraphics[width=.4\textwidth]{figs/RMS90Fit.pdf} \\
+\includegraphics[width=.35\textwidth]{figs/Mean90Fit.pdf} &
+\includegraphics[width=.35\textwidth]{figs/RMS90Fit.pdf} \\
 \end{tabular}
 \end{center}
 \caption{The (a) energy response and (b) resolution of the W-jets from the 
@@ -273,7 +275,8 @@ $\mathrm{Z}^{\prime}\rightarrow \mathrm{WW}$ samples. The response is fitted
 with a function $y_\mathrm{response} = p_0\left(1-p_1 e^{-x/p_2}\right)$ 
 while the resolution is fitted with a function 
 $y_\mathrm{resolution}=p_0/\sqrt{E_\mathrm{true}}\oplus p_1$ as indicated 
-by the curves.}
+by the curves.
+}
 \label{fig:wjet}
 \end{figure}
 
@@ -284,7 +287,7 @@ is quantified by a variable, signed $\Delta R$, which is defined as the
 displacement of a calorimeter hit within a W-jet (Higgs-jet), in the 
 $\eta-\phi$ plane, with respect to the generator-level W (Higgs) boson-direction, projected onto the $\mathrm{q}-\bar{\mathrm{q}}$ 
 axis ($\mathrm{b}-\bar{\mathrm{b}}$) : \( \mathrm{signed}~\Delta R \equiv 
-\frac{\overrightarrow{D_{\mathrm{boson,calohit}}}~\bullet~\overrightarrow{D_{\mathrm{q}\bar{\mathrm{q}}}}}{\overrightarrow{D_{\mathrm{q}\bar{\mathrm{q}}}}}\). 
+\frac{\overrightarrow{D}_{\mathrm{boson,calohit}}~\bullet~\overrightarrow{D}_{\mathrm{q}\bar{\mathrm{q}}}}{\overrightarrow{D}_{\mathrm{q}\bar{\mathrm{q}}}}\). 
 Figure~\ref{fig:angular} shows the ECAL and HCAL energy profiles as a function 
 of signed $\Delta R$ for the W-jets and Higgs-jets. The high-granularity 
 calorimeter makes it possible to see the separation of subjets within 
@@ -294,8 +297,8 @@ highly-boosted W-jets and Higgs-jets.
 \begin{figure}
 \begin{center}
 \begin{tabular}{cc}
-\includegraphics[width=.4\textwidth]{figs/ZprimeWW_h_signdR.pdf} &
-\includegraphics[width=.4\textwidth]{figs/2HDM_h_signdR.pdf}\\
+\includegraphics[width=.35\textwidth]{figs/ZprimeWW_h_signdR.pdf} &
+\includegraphics[width=.35\textwidth]{figs/2HDM_h_signdR.pdf}\\
 \end{tabular}
 \end{center}
 \caption{
@@ -311,16 +314,23 @@ Higgs-jets. }
 
 
 \section{Conclusion}
-In this document, we present a first study of the boosted W-jets and 
-Higgs-jets with the SiFCC detector using a full \GEANTfour simulation. The 
+In this document, we present a first study of single particle response and 
+boosted W-jets and Higgs-jets at the tens-TeV energy scale using a full 
+\GEANTfour\ simulation. The 
 energy response and resolution of single particles follow the expected 
 performance of the designed detector while the energy resolution of 
-calorimeter jets is higher than the expected values. We will continue the 
-study with lower-energy jets. The high granularity of the SiFCC calorimeters 
+calorimeter jets is higher than the expected values. 
+The high granularity of the SiFCC calorimeters 
 shows the possibility to separate energy 
 clusters within a jet from a 2.5-5 TeV boosted boson. We are geared towards 
 the study of high-level variables, such as jet substructures, jet grooming, 
 etc.
+
+\acknowledgments 
+ This research was done using resources provided by the Open Science Grid,
+which is supported by the National Science Foundation and the U.S.
+Department of Energy's Office of Science. The work of S.C. was supported by 
+the U.S. Department of Energy, Office of Science under contract DE-AC02-06CH11357.
 
 \begin{thebibliography}{99}
 \bibitem{FCC-hh}
@@ -336,10 +346,10 @@ etc.
   %12 citations counted in INSPIRE as of 17 Oct 2016
 
 %\cite{CEPC-SPPCStudyGroup:2015csa}
-\bibitem{SPPC-two} 
-  CEPC-SPPC Study Group,
-  ``CEPC-SPPC Preliminary Conceptual Design Report. 1. Physics and Detector,''
-  IHEP-CEPC-DR-2015-01, IHEP-TH-2015-01, HEP-EP-2015-01.
+%\bibitem{SPPC-two} 
+%  CEPC-SPPC Study Group,
+%  ``CEPC-SPPC Preliminary Conceptual Design Report. 1. Physics and Detector,''
+%  IHEP-CEPC-DR-2015-01, IHEP-TH-2015-01, HEP-EP-2015-01.
   %%CITATION = IHEP-CEPC-DR-2015-01, IHEP-TH-2015-01, HEP-EP-2015-01;%%
   %7 citations counted in INSPIRE as of 17 Oct 2016
 
@@ -351,6 +361,17 @@ etc.
   IHEP-CEPC-DR-2015-01, IHEP-AC-2015-01.
   %%CITATION = IHEP-CEPC-DR-2015-01, IHEP-AC-2015-01;%%
   %3 citations counted in INSPIRE as of 17 Oct 2016
+
+
+%\cite{Carli:2016iuf}
+\bibitem{bitch} 
+  T.~Carli, C.~Helsens, A.~Henriques Correia and C.~Solans Sánchez,
+  ``Containment and resolution of hadronic showers at the FCC,''
+  JINST {\bf 11}, no. 09, P09012 (2016).
+% doi:10.1088/1748-0221/11/09/P09012
+% [arXiv:1604.01415 [physics.ins-det]].
+  %%CITATION = doi:10.1088/1748-0221/11/09/P09012;%%
+
 
 %\cite{Aihara:2009ad}
 \bibitem{sid} 
@@ -376,15 +397,17 @@ etc.
   %%CITATION = ARXIV:1306.6329;%%
   %214 citations counted in INSPIRE as of 17 Oct 2016
 
-\bibitem{SiFCCv4} 
-  S.~Chekanov {\it et al.},
- ``SiFCC4'',
-  http://atlaswww.hep.anl.gov/hepsim/soft/detectors/sifcch4/sifcch4.html.
 
 \bibitem{PROMC} 
-  S.~Chekanov {\it et al.},
- ``ProMC'',
-  http://atlaswww.hep.anl.gov/asc/promc/.
+%\cite{Chekanov:2013mma}
+%\bibitem{Chekanov:2013mma} 
+  S.~V.~Chekanov, K.~Strand and P.~Van Gemmeren,
+  ``ProMC: Input-output data format for HEP applications using varint encoding,''
+  Comput.\ Phys.\ Commun.\  {\bf 185}, 2629 (2014).
+%  doi:10.1016/j.cpc.2014.06.016
+%  [arXiv:1311.1229 [physics.comp-ph]].
+  %%CITATION = doi:10.1016/j.cpc.2014.06.016;%%
+  %6 citations counted in INSPIRE as of 21 Oct 2016
 
 %\cite{Sjostrand:2006za}
 \bibitem{PYTHIA}
@@ -417,6 +440,27 @@ etc.
 %  doi:10.1016/S0168-9002(03)01368-8
   %%CITATION = doi:10.1016/S0168-9002(03)01368-8;%%
   %7029 citations counted in INSPIRE as of 19 Oct 2016
+
+
+%\cite{Chekanov:2014fga}
+\bibitem{hepsim} 
+  S.~V.~Chekanov,
+  ``HepSim: a repository with predictions for high-energy physics experiments,''
+  Adv.\ High Energy Phys.\  {\bf 2015}, 136093 (2015).
+%  doi:10.1155/2015/136093
+%  [arXiv:1403.1886 [hep-ph]].
+  %%CITATION = doi:10.1155/2015/136093;%%
+  %8 citations counted in INSPIRE as of 21 Oct 2016
+
+%\cite{Pordes:2007zzb}
+\bibitem{osg} 
+  R.~Pordes {\it et al.},
+  %``The Open Science Grid,''
+  J.\ Phys.\ Conf.\ Ser.\  {\bf 78}, 012057 (2007).
+%  doi:10.1088/1742-6596/78/1/012057
+  %%CITATION = doi:10.1088/1742-6596/78/1/012057;%%
+  %31 citations counted in INSPIRE as of 21 Oct 2016
+
 
 %\cite{Graf:2006ei}
 \bibitem{SLIC} 
